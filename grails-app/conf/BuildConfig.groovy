@@ -50,5 +50,6 @@ grails.project.dependency.resolution = {
         build ":tomcat:$grailsVersion"
 
         compile ':cache:1.0.0'
+        compile ":shiro:1.1.4"
     }
 }
