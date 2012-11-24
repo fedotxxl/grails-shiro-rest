@@ -1,6 +1,6 @@
 package ru.grails
 
-class Profession {
+class Job {
     
     String title
 

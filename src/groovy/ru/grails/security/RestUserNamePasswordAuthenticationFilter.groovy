@@ -9,7 +9,7 @@ import javax.servlet.ServletRequest
 import javax.servlet.ServletResponse
 import javax.servlet.http.HttpServletResponse
 
-abstract class RestUserNamePasswordAuthenticationFilter extends AuthenticatingFilter {
+abstract class RestUsernamePasswordAuthenticationFilter extends AuthenticatingFilter {
 
     private RestService restService
 

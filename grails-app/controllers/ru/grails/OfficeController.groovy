@@ -16,7 +16,7 @@ class OfficeController {
 
     private answer(String room) {
         render """
-Hello! I'm ${(request.currentUser?.userName) ?: 'unknown'} <br>
+Hello! I'm ${(request.currentUser?.username) ?: 'unknown'} <br>
 I'm at ${room}
 """
     }

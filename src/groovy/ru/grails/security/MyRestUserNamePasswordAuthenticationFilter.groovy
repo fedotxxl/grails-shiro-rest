@@ -1,6 +1,6 @@
 package ru.grails.security
 
-class MyRestUserNamePasswordAuthenticationFilter extends RestUserNamePasswordAuthenticationFilter {
+class MyRestUsernamePasswordAuthenticationFilter extends RestUsernamePasswordAuthenticationFilter {
 
     protected String getUsername(request) {
         return request.getParameter('username')

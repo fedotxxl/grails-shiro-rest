@@ -20,15 +20,15 @@ class RestRealm {
 
         // If we don't have user for specified token then user is not authenticated
         def username = restService.getUsernameForToken(token)
-        def user = (!username) ?: Employee.findByUserName(username)
+        def user = (!username) ?: Employee.findByUsername(username)
         if (!user) {
             throw new UnknownAccountException("No account found for token [${token}]")
         }
 
-        log.info "Found user '${user.userName}' in DB"
+        log.info "Found user '${user.username}' in DB"
 
         //ok. Account is found, user is authenticated
-        return new SimpleAccount(user.userName, user.passwordHash, "RestRealm")
+        return new SimpleAccount(user.username, user.passwordHash, "RestRealm")
     }
 
 }

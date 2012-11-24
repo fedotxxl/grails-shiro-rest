@@ -99,11 +99,11 @@ security {
         filter.config = """
 [filters]
 # HTTP Basic authentication
-restUserNamePasswordAuth = ru.grails.security.MyRestUserNamePasswordAuthenticationFilter
+restUsernamePasswordAuth = ru.grails.security.MyRestUsernamePasswordAuthenticationFilter
 restTokenAuth = ru.grails.security.MyRestTokenAuthenticationFilter
 
 [urls]
-/rest/auth = noSessionCreation, restUserNamePasswordAuth
+/rest/auth = noSessionCreation, restUsernamePasswordAuth
 /rest/** = noSessionCreation, restTokenAuth
 """
     }

@@ -2,14 +2,14 @@ package ru.grails
 
 class Employee {
     
-    String userName
+    String username
     String passwordHash
-    Profession profession
+    Job job
 
     static hasMany = [ permissions: String ]
 
     static constraints = {
-        profession(nullable: true)
+        job(nullable: true)
     }
     
 }

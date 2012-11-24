@@ -23,12 +23,12 @@ class DbRealm {
         // Get the user with the given username. If the user is not
         // found, then they don't have an account and we throw an
         // exception.
-        def user = Employee.findByUserName(username)
+        def user = Employee.findByUsername(username)
         if (!user) {
             throw new UnknownAccountException("No account found for user [${username}]")
         }
 
-        log.info "Found user '${user.userName}' in DB"
+        log.info "Found user '${user.username}' in DB"
 
         // Now check the user's password against the hashed value stored
         // in the database.
@@ -43,10 +43,10 @@ class DbRealm {
 
     def hasRole(principal, roleName) {
         def roles = Employee.withCriteria {
-            profession {
+            job {
                 eq("title", roleName)
             }
-            eq("userName", principal)
+            eq("username", principal)
         }
 
         return roles.size() > 0
@@ -66,7 +66,7 @@ class DbRealm {
         //
         // First find all the permissions that the user has that match
         // the required permission's type and project code.
-        def user = Employee.findByUserName(principal)
+        def user = Employee.findByUsername(principal)
         def permissions = user.permissions
 
         // Try each of the permissions found and see whether any of
@@ -95,7 +95,7 @@ class DbRealm {
         // If not, does he gain it through a role?
         //
         // Get the permissions from the roles that the user does have.
-        def results = Employee.executeQuery("select distinct p from Employee as user join user.profession as pr join pr.permissions as p where user.userName = '$principal'")
+        def results = Employee.executeQuery("select distinct p from Employee as user join user.job as pr join pr.permissions as p where user.username = '$principal'")
 
         // There may be some duplicate entries in the results, but
         // at this stage it is not worth trying to remove them. Now,

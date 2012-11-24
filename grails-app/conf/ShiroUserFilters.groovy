@@ -10,7 +10,7 @@ class ShiroUserFilters {
                 def username = SecurityUtils.subject.principal
 
                 //load domain user
-                request.currentUser = (username) ? Employee.findByUserName(username) : null
+                request.currentUser = (username) ? Employee.findByUsername(username) : null
 
                 //continue processing
                 return true
