@@ -1,10 +1,8 @@
-package org.example
 
 import org.apache.shiro.authc.AccountException
 import org.apache.shiro.authc.IncorrectCredentialsException
-import org.apache.shiro.authc.UnknownAccountException
 import org.apache.shiro.authc.SimpleAccount
-import org.apache.shiro.authz.permission.WildcardPermission
+import org.apache.shiro.authc.UnknownAccountException
 import ru.grails.Employee
 
 class DbRealm {

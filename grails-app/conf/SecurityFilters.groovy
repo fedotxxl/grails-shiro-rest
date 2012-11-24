@@ -10,7 +10,10 @@ class SecurityFilters {
                 if (!controllerName) return true
 
                 // Access control by convention.
-                if (!(controllerName == 'office' && actionName == 'hall')) {
+                if (
+                        !(controllerName == 'office' && actionName == 'hall') &&
+                        !(request.forwardURI.contains("/rest/"))
+                ) {
                     accessControl()
                 }
             }

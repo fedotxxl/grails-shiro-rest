@@ -92,3 +92,19 @@ log4j = {
 
 grails.gorm.failOnError=true
 grails.app.context="/"
+
+security {
+    shiro {
+        authc.required = false
+        filter.config = """
+[filters]
+# HTTP Basic authentication
+restUserNamePasswordAuth = ru.grails.security.MyRestUserNamePasswordAuthenticationFilter
+restTokenAuth = ru.grails.security.MyRestTokenAuthenticationFilter
+
+[urls]
+/rest/auth = noSessionCreation, restUserNamePasswordAuth
+/rest/** = noSessionCreation, restTokenAuth
+"""
+    }
+}
