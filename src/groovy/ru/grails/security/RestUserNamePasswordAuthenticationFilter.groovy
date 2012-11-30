@@ -20,6 +20,11 @@ abstract class RestUsernamePasswordAuthenticationFilter extends AuthenticatingFi
         return new UsernamePasswordToken(username as String, password as String)
     }
 
+    protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
+        //this request should be handled by onAccessDenied
+        return false;
+    }
+
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) {
         if (executeLogin(request, response)) {
             //ok... login/password is correct.

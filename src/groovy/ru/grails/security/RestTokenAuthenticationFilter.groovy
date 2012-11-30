@@ -13,6 +13,11 @@ abstract class RestTokenAuthenticationFilter extends AuthenticatingFilter {
         return new RestToken(token: getToken(request))
     }
 
+    protected boolean isAccessAllowed(ServletRequest request, ServletResponse response, Object mappedValue) {
+        //this request should be handled by onAccessDenied
+        return false;
+    }
+
     protected boolean onAccessDenied(ServletRequest request, ServletResponse response) {
         if (executeLogin(request, response)) {
             // correct token... continue processing
